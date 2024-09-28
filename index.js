@@ -1,6 +1,6 @@
 
 //Using Scrimba API to fetch pictures from Unspelsh
-fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
+fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=the moon")
     .then(res => res.json())
     .then(data => {
         document.body.style.backgroundImage = `url(${data.urls.regular})` 
@@ -13,7 +13,7 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
 		document.getElementById("author").textContent = `By: Dodi Achmad`
     })
 //Pulling CryptoCurrency Data
-fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
+fetch("https://api.coingecko.com/api/v3/coins/bitcoin")
     .then(res => {
         if (!res.ok) { //Using res.ok to handle errors that still return something like 404 errors
             throw Error("Something went wrong")
@@ -35,12 +35,12 @@ fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
 
 // Creating function to get current time
 function getCurrentTime() {
-    const date = new Date()
-    document.getElementById("time").textContent = date.toLocaleTimeString("en-us", {timeStyle: "medium"})
+    const date = new Date() // saving current date and time to variable
+    document.getElementById("time").textContent = date. toLocaleTimeString("en-us", {timeStyle: "medium"}) // assigning time to the html file using get element by ID
 }
-
-setInterval(getCurrentTime, 1000)
-
+//
+setInterval(getCurrentTime, 1000) //Updates the time every second
+// Getting the weather from the open weather map api 
 navigator.geolocation.getCurrentPosition(position => {
     fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=imperial`)
         .then(res => {
