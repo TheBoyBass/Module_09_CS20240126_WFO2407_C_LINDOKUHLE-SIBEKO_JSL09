@@ -1,6 +1,6 @@
 
 //Using Scrimba API to fetch pictures from Unspelsh
-fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=the moon")
+fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=moon")
     .then(res => res.json())
     .then(data => {
         document.body.style.backgroundImage = `url(${data.urls.regular})` 
@@ -26,9 +26,9 @@ fetch("https://api.coingecko.com/api/v3/coins/bitcoin")
             <span>${data.name}</span>
         ` 
         document.getElementById("crypto").innerHTML += `
-            <p>🎯: $${data.market_data.current_price.usd}</p>
-            <p>👆: $${data.market_data.high_24h.usd}</p>
-            <p>👇: $${data.market_data.low_24h.usd}</p>
+            <p>🎯: R${data.market_data.current_price.zar}</p>
+            <p>👆: R${data.market_data.high_24h.zar}</p>
+            <p>👇: R${data.market_data.low_24h.zar}</p>
         `
     })
     .catch(err => console.error(err))
@@ -53,7 +53,7 @@ navigator.geolocation.getCurrentPosition(position => {
             const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
             document.getElementById("weather").innerHTML = `
                 <img src=${iconUrl} />
-                <p class="weather-temp">${Math.round(data.main.temp)}º</p>
+                <p class="weather-temp">${Math.round(data.main.temp)-32*(5/9).toFixed(2)}ºC</p>
                 <p class="weather-city">${data.name}</p>
             `
         })
